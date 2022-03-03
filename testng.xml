@@ -10,7 +10,7 @@
 	</listeners>
 	<test thread-count="1" name="Test">
 		<classes>
-			<class name="dummyTest" />
+			<class name="homePage.HomePageTest" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
