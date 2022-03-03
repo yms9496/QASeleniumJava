@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="13813" started-at="2022-03-03T14:54:53 IST" finished-at="2022-03-03T14:55:07 IST">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="13813" started-at="2022-03-03T14:54:53 IST" finished-at="2022-03-03T14:55:07 IST">
+      <class name="dummyTest">
+        <test-method status="PASS" signature="beforeUploadTest()[pri:0, instance:dummyTest@4d3167f4]" name="beforeUploadTest" is-config="true" duration-ms="13282" started-at="2022-03-03T14:54:53 IST" finished-at="2022-03-03T14:55:06 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeUploadTest -->
+        <test-method status="PASS" signature="a()[pri:0, instance:dummyTest@4d3167f4]" name="a" duration-ms="21" started-at="2022-03-03T14:55:06 IST" finished-at="2022-03-03T14:55:06 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- a -->
+        <test-method status="PASS" signature="b()[pri:0, instance:dummyTest@4d3167f4]" name="b" duration-ms="2" started-at="2022-03-03T14:55:06 IST" finished-at="2022-03-03T14:55:06 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- b -->
+        <test-method status="PASS" signature="afterUploadTest()[pri:0, instance:dummyTest@4d3167f4]" name="afterUploadTest" is-config="true" duration-ms="411" started-at="2022-03-03T14:55:06 IST" finished-at="2022-03-03T14:55:07 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterUploadTest -->
+      </class> <!-- dummyTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
