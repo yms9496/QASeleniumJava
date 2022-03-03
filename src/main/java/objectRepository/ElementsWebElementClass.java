@@ -16,7 +16,7 @@ public class ElementsWebElementClass {
 	String buttonsTab = "//div[@class = 'element-list collapse show']/ul/li/span[normalize-space()=Buttons']";
 	String linksTab = "//div[@class = 'element-list collapse show']/ul/li/span[normalize-space()=Links']";
 	String brokenLinksImagesTab = "//div[@class = 'element-list collapse show']/ul/li/span[normalize-space()='Broken Links - Images']";
-	
+	String demo = "";
 	
 	// Text box page
 }
