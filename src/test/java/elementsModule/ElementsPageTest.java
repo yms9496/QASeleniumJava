@@ -6,7 +6,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import pages.ElementsPage;
+import elementsModulePages.ElementsPage;
 import utilities.BaseClass;
 
 public class ElementsPageTest extends BaseClass {
