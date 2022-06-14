@@ -6,7 +6,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import elementsModulePages.ElementsPage;
+import pages.ElementsPage;
 import utilities.BaseClass;
 
 public class ElementsPageTest extends BaseClass {
@@ -92,6 +92,7 @@ public class ElementsPageTest extends BaseClass {
 
 		scrollToElement(ep.buttonsTab());
 		ep.brokenLinksImagesTab().click();
+		//Assert.assertTrue(false);
 
 	}
 

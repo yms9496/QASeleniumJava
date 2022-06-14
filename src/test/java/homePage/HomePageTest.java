@@ -5,6 +5,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import pages.HomePage;
 import utilities.BaseClass;
 
 public class HomePageTest extends BaseClass{

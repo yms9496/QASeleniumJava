@@ -45,13 +45,13 @@ public class FailureScreenshotsCollectionListener implements ITestListener {
 	}
 
 	public void onFinish(ITestContext it) {
-		// TODO Auto-generated method stub
-
+		
+		System.out.println("public void onFinish(ITestContext it)");
 	}
 
 	public void onStart(ITestContext it) {
-		// TODO Auto-generated method stub
 
+		System.out.println("public void onStart(ITestContext it)");
 	}
 
 	public void onTestFailedButWithinSuccessPercentage(ITestResult it) {
@@ -62,7 +62,7 @@ public class FailureScreenshotsCollectionListener implements ITestListener {
 	public void onTestFailure(ITestResult it) {
 
 		// get the failed test case name
-		String failedTestCaseName = it.getName();
+		String failedTestCaseName = it.getTestClass().toString();
 
 		System.out.println(
 				"Failed Test Case Name " + failedTestCaseName + ". Collecting screenshot for failed case analysis");
@@ -84,18 +84,19 @@ public class FailureScreenshotsCollectionListener implements ITestListener {
 	}
 
 	public void onTestSkipped(ITestResult it) {
-		// TODO Auto-generated method stub
 
+		System.out.println("Skipped Test Case : " + it.getTestClass().toString());
 	}
 
 	public void onTestStart(ITestResult it) {
-		// TODO Auto-generated method stub
 
+		System.out.println("Executing Test Case : " + it.getTestClass().toString());
 	}
 
 	public void onTestSuccess(ITestResult it) {
-		// TODO Auto-generated method stub
 
+		System.out.println("Test Case Passed : " + it.getTestClass().toString());
+		
 	}
 
 	private void collectScreenshot(String failedTestCaseName, WebDriver driver) throws IOException {

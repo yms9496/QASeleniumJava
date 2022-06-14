@@ -22,7 +22,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class BaseClass {
 
 	public WebDriver driver;
-	public Connection conn;
+	private Connection conn;
 	ExcelMapping em = new ExcelMapping();
 	ExcelUtilities eu = new ExcelUtilities();
 	String envName;

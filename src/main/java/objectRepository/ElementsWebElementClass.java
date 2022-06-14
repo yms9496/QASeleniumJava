@@ -7,7 +7,7 @@ public class ElementsWebElementClass {
 	public String elementsCard = "//div[@class = 'category-cards']//div[@class = 'card-body']/h5[normalize-space() = 'Elements']"; 
 	
 	// Elements Page
-	public String elementsPage = "//div[@class = 'main-header']";
+	public String elementsPage = "//div[@class = 'main-header' and normalize-space() = 'Elements']";
 	public String elementsMenuDropdown = "//div[@class = 'left-pannel']//div[@class = 'header-text' and normalize-space() = 'Elements']/span";
 	public String textBoxTab = "//div[@class = 'element-list collapse show']/ul/li/span[normalize-space()='Text Box']";
 	public String checkBoxTab = "//div[@class = 'element-list collapse show']/ul/li/span[normalize-space()='Check Box']";

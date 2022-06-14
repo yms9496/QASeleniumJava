@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
+	<listeners>
+	
+	<listener class-name="listeners.FailureScreenshotsCollectionListener"></listener>
+	
+	</listeners>
+	
 	<test thread-count="1" name="Test" >
 		<classes>
 			<class name="homePage.HomePageTest" />
@@ -12,27 +18,13 @@
 			<class name="elementsModule.ElementsPageTest" />
 		</classes>
 	</test> <!-- Test -->
-		<test thread-count="1" name="Test5" >
+	
+		<test thread-count="1" name="Test3" >
 		<classes>
-			<class name="homePage.HomePageTest" />
+			<class name="elementsModule.TextBoxPageTest" />
 		</classes>
 	</test> <!-- Test -->
-
-	<test thread-count="1" name="Test3" >
-		<classes>
-			<class name="elementsModule.ElementsPageTest" />
-		</classes>
-	</test> <!-- Test -->
-		<test thread-count="1" name="Test4" >
-		<classes>
-			<class name="homePage.HomePageTest" />
-		</classes>
-	</test> <!-- Test -->
-
-	<test thread-count="1" name="Test6" >
-		<classes>
-			<class name="elementsModule.ElementsPageTest" />
-		</classes>
-	</test> <!-- Test -->
+	
+	
 </suite> <!-- Suite -->
 

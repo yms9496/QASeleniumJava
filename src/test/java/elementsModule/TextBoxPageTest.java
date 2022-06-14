@@ -6,11 +6,11 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import elementsModulePages.ElementsPage;
-import elementsModulePages.TextBoxPage;
+import pages.ElementsPage;
+import pages.TextBoxPage;
 import utilities.BaseClass;
 
-public class TestBoxPageTest extends BaseClass {
+public class TextBoxPageTest extends BaseClass {
 
 	WebDriver driver;
 	TextBoxPage tbp;
