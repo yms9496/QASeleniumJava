@@ -21,6 +21,12 @@ public class FormsPage {
 
 		return driver.findElement(By.xpath(fw.homePage));
 	}
+	
+
+	public WebElement formsCard() {
+
+		return driver.findElement(By.xpath(fw.formsCard));
+	}
 
 	public WebElement formsPage() {
 		return driver.findElement(By.xpath(fw.formsPage));
@@ -105,5 +111,5 @@ public class FormsPage {
 	public WebElement submitButton() {
 		return driver.findElement(By.xpath(fw.submitButton));
 	}
-
+	
 }

@@ -4,13 +4,13 @@ public class FormsWebElementClass {
 
 	// Home Page
 	public String homePage = "//header/a/img[@src = '/images/Toolsqa.jpg']";
-	public String elementsCard = "//div[@class = 'category-cards']//div[@class = 'card-body']/h5[normalize-space() = 'Elements']";
+	public String formsCard = "//div[@class = 'category-cards']//div[@class = 'card-body']/h5[normalize-space() = 'Forms']";
 
 	// Forms Page
 	public String formsPage = "//div[@class = 'main-header' and normalize-space() = 'Forms']";
 	public String formsMenuDropdown = "//div[@class = 'left-pannel']//div[@class = 'header-text' and normalize-space() = 'Forms']/span";
 	public String practiceFormTab = "//div[@class = 'element-list collapse show']/ul/li/span[normalize-space()='Practice Form']";
-	public String practiceFormPage = "//div[@class='practice-form-wrapper']";
+	public String practiceFormPage = "//div[@class='practice-form-wrapper']/h5";
 	public String firstName = "//input[@id='firstName']";
 	public String lastName = "//input[@id='lastName']";
 	public String userEmail = "//input[@id='userEmail']";
