@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import objectRepository.FormsWebElementClass;
 
@@ -112,4 +113,26 @@ public class FormsPage {
 		return driver.findElement(By.xpath(fw.submitButton));
 	}
 	
+	public WebElement selectDate(WebElement calendar, String year, String month, String day) throws InterruptedException {
+		
+		// clicking on the calendar to open calendar widget
+		calendar.click();
+		
+		//Selecting year from year dropdown
+		WebElement yearDropDown = driver.findElement(By.xpath("//div[@class = 'react-datepicker']//select[@class = 'react-datepicker__year-select']"));
+		Select selectYear = new Select (yearDropDown);
+		selectYear.selectByVisibleText(year);
+		
+		Thread.sleep(2000);
+		
+		//Selecting month from month dropdown
+		WebElement monthDropDown = driver.findElement(By.xpath("//div[@class = 'react-datepicker']//select[@class = 'react-datepicker__month-select']"));
+		Select selectMonth = new Select (monthDropDown);
+		selectMonth.selectByVisibleText(month);
+		
+		//Select and return date
+		
+		WebElement selectedDate = driver.findElement(By.xpath("//div[@class = 'react-datepicker__week']//div[@aria-label = '"+month+" "+day+"')]"));
+		return selectedDate;
+	}
 }

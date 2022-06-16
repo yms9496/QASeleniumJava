@@ -24,7 +24,7 @@ public class FormsWebElementClass {
 	public String hobbiesReading = "//input[@id='hobbies-checkbox-2']";
 	public String hobbiesMusic = "//input[@id='hobbies-checkbox-3']";
 	public String userPicture = "//input[@id='uploadPicture']";
-	public String currentAddress = "//input[@id='currentAddress']";
+	public String currentAddress = "//textarea[@id='currentAddress']";
 	public String userState = "//div[@id='stateCity-wrapper']//input[@id='react-select-3-input']";
 	public String userCity = "//div[@id='stateCity-wrapper']//input[@id='react-select-4-input']";
 	public String submitButton = "//button[@id='submit']";
