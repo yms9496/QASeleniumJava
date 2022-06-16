@@ -1,5 +1,7 @@
 package objectRepository;
 
+import org.openqa.selenium.WebDriver;
+
 public class FormsWebElementClass {
 
 	// Home Page
@@ -26,7 +28,9 @@ public class FormsWebElementClass {
 	public String userPicture = "//input[@id='uploadPicture']";
 	public String currentAddress = "//textarea[@id='currentAddress']";
 	public String userState = "//div[@id='stateCity-wrapper']//input[@id='react-select-3-input']";
+	public String selectedState ="//div[@id = 'state']//div[contains(@class, 'singleValue')]";
 	public String userCity = "//div[@id='stateCity-wrapper']//input[@id='react-select-4-input']";
+	public String selectedCity ="//div[@id = 'city']//div[contains(@class, 'singleValue')]";
 	public String submitButton = "//button[@id='submit']";
 	
 }

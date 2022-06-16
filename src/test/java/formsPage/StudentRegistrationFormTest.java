@@ -1,6 +1,7 @@
 package formsPage;
 
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -73,7 +74,7 @@ public class StudentRegistrationFormTest extends BaseClass{
 		
 		fp.userNumber().sendKeys("9876543210");
 		
-		fp.selectDate(fp.userDOB(), "2022", "July", "9th").click();
+		fp.selectDate(fp.userDOB(), "2022", "July", "9").click();
 		
 		fp.userSubjects().sendKeys("Maths,  Physics, Chemistry");
 		
@@ -86,14 +87,12 @@ public class StudentRegistrationFormTest extends BaseClass{
 		fp.userPicture().sendKeys(filetoUpload);
 		
 		fp.currentAddress().sendKeys("101, IT Hub, Indore, MP");
+	
 		
- 		Select state = new Select (fp.userState());
-		state.selectByValue("NCR");
-		
-		Select city = new Select (fp.userCity());
-		city.selectByValue("Noida");
-		
-		Thread.sleep(3000);
+		fp.selectState("NCR");
+
+		fp.selectCity("Noida");
+
 	}
 	
 	

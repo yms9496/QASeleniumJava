@@ -1,9 +1,14 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import objectRepository.FormsWebElementClass;
 
@@ -104,9 +109,17 @@ public class FormsPage {
 	public WebElement userState() {
 		return driver.findElement(By.xpath(fw.userState));
 	}
+	
+	public WebElement selectedState() {
+		return driver.findElement(By.xpath(fw.selectedState));
+	}
 
 	public WebElement userCity() {
 		return driver.findElement(By.xpath(fw.userCity));
+	}
+	
+	public WebElement selectedCity() {
+		return driver.findElement(By.xpath(fw.selectedCity));
 	}
 
 	public WebElement submitButton() {
@@ -132,7 +145,28 @@ public class FormsPage {
 		
 		//Select and return date
 		
-		WebElement selectedDate = driver.findElement(By.xpath("//div[@class = 'react-datepicker__week']//div[@aria-label = '"+month+" "+day+"')]"));
+		String locator = "//div[@class = 'react-datepicker__week']//div[text() = '"+day+"'][not( contains(@class,'outside-month'))]";
+		WebElement selectedDate = driver.findElement(By.xpath(locator));
 		return selectedDate;
+	}
+
+	public void selectState(String state) throws InterruptedException {
+
+		userState().sendKeys(state);
+		Actions act = new Actions(driver);
+		act.sendKeys(Keys.ARROW_DOWN).build().perform();
+		act.sendKeys(Keys.ENTER).build().perform();
+		act.sendKeys(Keys.TAB).build().perform();
+		Assert.assertEquals(selectedState().getText().trim(), state.trim());
+	}
+
+	public void selectCity(String city) {
+
+		userCity().sendKeys(city);
+		Actions act = new Actions(driver);
+		act.sendKeys(Keys.ARROW_DOWN).build().perform();
+		act.sendKeys(Keys.ENTER).build().perform();
+		act.sendKeys(Keys.TAB).build().perform();
+		Assert.assertEquals(selectedCity().getText().trim(), city.trim());
 	}
 }
