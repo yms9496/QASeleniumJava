@@ -1,6 +1,8 @@
 package formsPage;
 
 
+import java.sql.SQLException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -26,7 +28,7 @@ public class StudentRegistrationFormTest extends BaseClass{
 	JavascriptExecutor jse;
 	
 	@BeforeTest
-	public void beforeFormsPage() throws InterruptedException {
+	public void beforeFormsPage() throws InterruptedException, SQLException {
 
 		// initialize driver and open browser
 		driver = initiateBrowser();
@@ -60,23 +62,23 @@ public class StudentRegistrationFormTest extends BaseClass{
 	}
 	
 	@Test(priority = 3)
-	public void fillForm() throws InterruptedException{
+	public void fillForm() throws InterruptedException, SQLException{
 		
-		fp.firstName().sendKeys("John");
-		fp.lastName().sendKeys("Wick");
-		fp.userEmail().sendKeys("john.wick123@gmail.com");
+		fp.firstName().sendKeys(fp.getUserFirstName());
+		fp.lastName().sendKeys(fp.getUserLastName());
+		fp.userEmail().sendKeys(fp.getUserEmail());
 		
 	//	WebDriverWait wait = new WebDriverWait(driver, 10);
     //  wait.until(ExpectedConditions.elementToBeClickable(fp.genderMale()));
 	//	fp.genderMale().click();
 		
-		jse.executeScript("arguments[0].click()", fp.genderMale());
+		jse.executeScript("arguments[0].click()", fp.getGender());
 		
-		fp.userNumber().sendKeys("9876543210");
+		fp.userNumber().sendKeys(fp.getUserContactNumber());
 		
 		fp.selectDate(fp.userDOB(), "2022", "July", "9").click();
 		
-		fp.userSubjects().sendKeys("Maths,  Physics, Chemistry");
+		fp.userSubjects().sendKeys(fp.getUserSubjects());
 		
 		jse.executeScript("window.scrollBy(0,250)", "");
 		
@@ -86,12 +88,12 @@ public class StudentRegistrationFormTest extends BaseClass{
 		final String filetoUpload = System.getProperty("user.dir") + "\\Test Data\\Image1.jpg";
 		fp.userPicture().sendKeys(filetoUpload);
 		
-		fp.currentAddress().sendKeys("101, IT Hub, Indore, MP");
+		fp.currentAddress().sendKeys(fp.getUserCurrentAddress());
 	
 		
-		fp.selectState("NCR");
+		fp.selectState(fp.getUserState());
 
-		fp.selectCity("Noida");
+		fp.selectCity(fp.getUserCity());
 
 	}
 	

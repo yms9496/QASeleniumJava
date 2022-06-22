@@ -16,7 +16,7 @@ import org.testng.Assert;
 import objectRepository.FormsWebElementClass;
 import utilities.BaseClass;
 
-public class FormsPage{
+public class FormsPage {
 
 	WebDriver driver;
 	FormsWebElementClass fw;
@@ -27,15 +27,14 @@ public class FormsPage{
 
 		this.driver = driver;
 		fw = new FormsWebElementClass();
-		bs = new BaseClass ();
-		rs = bs.getQueryResultSet ("select * from User_Data");
+		bs = new BaseClass();
+		rs = bs.getQueryResultSet("select * from User_Data where user id = 001");
 	}
 
 	public WebElement homePage() {
 
 		return driver.findElement(By.xpath(fw.homePage));
 	}
-	
 
 	public WebElement formsCard() {
 
@@ -117,7 +116,7 @@ public class FormsPage{
 	public WebElement userState() {
 		return driver.findElement(By.xpath(fw.userState));
 	}
-	
+
 	public WebElement selectedState() {
 		return driver.findElement(By.xpath(fw.selectedState));
 	}
@@ -125,7 +124,7 @@ public class FormsPage{
 	public WebElement userCity() {
 		return driver.findElement(By.xpath(fw.userCity));
 	}
-	
+
 	public WebElement selectedCity() {
 		return driver.findElement(By.xpath(fw.selectedCity));
 	}
@@ -133,27 +132,31 @@ public class FormsPage{
 	public WebElement submitButton() {
 		return driver.findElement(By.xpath(fw.submitButton));
 	}
-	
-	public WebElement selectDate(WebElement calendar, String year, String month, String day) throws InterruptedException {
-		
+
+	public WebElement selectDate(WebElement calendar, String year, String month, String day)
+			throws InterruptedException {
+
 		// clicking on the calendar to open calendar widget
 		calendar.click();
-		
-		//Selecting year from year dropdown
-		WebElement yearDropDown = driver.findElement(By.xpath("//div[@class = 'react-datepicker']//select[@class = 'react-datepicker__year-select']"));
-		Select selectYear = new Select (yearDropDown);
+
+		// Selecting year from year dropdown
+		WebElement yearDropDown = driver.findElement(
+				By.xpath("//div[@class = 'react-datepicker']//select[@class = 'react-datepicker__year-select']"));
+		Select selectYear = new Select(yearDropDown);
 		selectYear.selectByVisibleText(year);
-		
+
 		Thread.sleep(2000);
-		
-		//Selecting month from month dropdown
-		WebElement monthDropDown = driver.findElement(By.xpath("//div[@class = 'react-datepicker']//select[@class = 'react-datepicker__month-select']"));
-		Select selectMonth = new Select (monthDropDown);
+
+		// Selecting month from month dropdown
+		WebElement monthDropDown = driver.findElement(
+				By.xpath("//div[@class = 'react-datepicker']//select[@class = 'react-datepicker__month-select']"));
+		Select selectMonth = new Select(monthDropDown);
 		selectMonth.selectByVisibleText(month);
-		
-		//Select and return date
-		
-		String locator = "//div[@class = 'react-datepicker__week']//div[text() = '"+day+"'][not( contains(@class,'outside-month'))]";
+
+		// Select and return date
+
+		String locator = "//div[@class = 'react-datepicker__week']//div[text() = '" + day
+				+ "'][not( contains(@class,'outside-month'))]";
 		WebElement selectedDate = driver.findElement(By.xpath(locator));
 		return selectedDate;
 	}
@@ -177,9 +180,100 @@ public class FormsPage{
 		act.sendKeys(Keys.TAB).build().perform();
 		Assert.assertEquals(selectedCity().getText().trim(), city.trim());
 	}
-	
-	public String getUserName() {
-		
-		return rs.;
+
+	public String getUserFirstName() throws SQLException {
+
+		String userFirstName = "";
+		while (rs.next()) {
+
+			userFirstName = rs.getString("first name");
+		}
+		return userFirstName;
 	}
+
+	public String getUserLastName() throws SQLException {
+
+		String userLastName = "";
+		while (rs.next()) {
+
+			userLastName = rs.getString("last name");
+		}
+		return userLastName;
+	}
+	
+	public String getUserEmail() throws SQLException {
+
+		String userEmail = "";
+		while (rs.next()) {
+
+			userEmail = rs.getString("user email");
+		}
+		return userEmail;
+	}
+	
+	public String getGender() throws SQLException {
+
+		String userGender = "";
+		while (rs.next()) {
+
+			userGender = rs.getString("gender");
+		}
+		return userGender;
+	}
+	
+	public String getUserContactNumber() throws SQLException {
+
+		String userContactNumber = null;
+		while (rs.next()) {
+
+			userContactNumber = Integer.toString(rs.getInt("phone number"));
+		}
+		return userContactNumber;
+	}
+	
+	// DOB part to be implemented here
+	
+	public String getUserSubjects() throws SQLException {
+
+		String userSubjects = "";
+		while (rs.next()) {
+
+			userSubjects = rs.getString("subjects");
+		}
+		return userSubjects;
+	}
+	
+	// Hobbies part to be implemented
+	
+	public String getUserCurrentAddress() throws SQLException {
+
+		String userCurrentAddress = "";
+		while (rs.next()) {
+
+			userCurrentAddress = rs.getString("address");
+		}
+		return userCurrentAddress;
+	}
+	
+	public String getUserCity() throws SQLException {
+
+		String userCity = "";
+		while (rs.next()) {
+
+			userCity = rs.getString("city");
+		}
+		return userCity;
+	}
+	
+	public String getUserState() throws SQLException {
+
+		String userState = "";
+		while (rs.next()) {
+
+			userState = rs.getString("state");
+		}
+		return userState;
+	}
+	
+	
 }
