@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+ <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
 	<listeners>
 	
 	<listener class-name="listeners.FailureScreenshotsCollectionListener"></listener>
+	<listener class-name="listeners.DBConnectionManagerListener"></listener>
 	
 	</listeners>
 	
@@ -22,6 +23,12 @@
 		<test thread-count="1" name="Test3" >
 		<classes>
 			<class name="elementsModule.TextBoxPageTest" />
+		</classes>
+	</test> <!-- Test -->
+	
+		<test thread-count="1" name="Test4" >
+		<classes>
+			<class name="formsPage.StudentRegistrationFormTest" />
 		</classes>
 	</test> <!-- Test -->
 	

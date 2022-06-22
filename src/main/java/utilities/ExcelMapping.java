@@ -19,7 +19,7 @@ public class ExcelMapping {
 		excelMapping.put("FireFoxVersion","Configuration,2,4"); // current browser version
 		excelMapping.put("DB_Region","Configuration,3,1"); // current DB region
 		excelMapping.put("CurrentEnvURL", "Configuration,4,1"); // get the URL based on env
-		excelMapping.put("DB_Uname","Configuration,1,5"); // current browser version
-		excelMapping.put("DB_Pass","Configuration,1,6"); // current browser version
+		excelMapping.put("DB_Uname","Configuration,5,1"); // current browser version
+		excelMapping.put("DB_Pass","Configuration,6,1"); // current browser version
 	}
 }

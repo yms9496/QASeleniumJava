@@ -22,7 +22,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class BaseClass {
 
 	public WebDriver driver;
-	private Connection conn;
+	public Connection conn;
 	ExcelMapping em = new ExcelMapping();
 	ExcelUtilities eu = new ExcelUtilities();
 	String envName;
@@ -158,14 +158,14 @@ public class BaseClass {
 
 	
 
-	private void getDBConnection() throws SQLException {
+	protected void getDBConnection() throws SQLException {
 
-		String uname = em.excelMapping.get("DB_Uname");
-		String pass = em.excelMapping.get("DB_Pass");
+		String uname = eu.excelRead(em.excelMapping.get("DB_Uname"));
+		String pass = eu.excelRead(em.excelMapping.get("DB_Pass"));
 		dbRegion = eu.excelRead(em.excelMapping.get("DB_Region"));
 		System.out.println("DB pointing set to: " + dbRegion);
 
-		String url = "jdbc:postgresql://localhost/" + dbRegion + "?user=" + uname + "&password=" + pass + "&ssl=false";
+		String url = "jdbc:postgresql://localhost/" + dbRegion + "?user=" + uname + "&password=" + pass + "&ssl=false?currentSchema=QASelenium";
 
 		if (conn == null) {
 			
@@ -213,9 +213,11 @@ public class BaseClass {
 		
 	}
 
-	private void closeDBConnection() throws SQLException {
+	protected void closeDBConnection() throws SQLException {
 
-		if (conn != null)
+		if (conn != null) {
+			System.out.println("Closing DB Connection");
 			conn.close();
+		}
 	}
 }

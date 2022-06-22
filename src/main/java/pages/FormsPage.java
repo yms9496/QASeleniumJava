@@ -1,5 +1,8 @@
 package pages;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -11,16 +14,21 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import objectRepository.FormsWebElementClass;
+import utilities.BaseClass;
 
-public class FormsPage {
+public class FormsPage{
 
 	WebDriver driver;
 	FormsWebElementClass fw;
+	BaseClass bs;
+	ResultSet rs;
 
-	public FormsPage(WebDriver driver) {
+	public FormsPage(WebDriver driver) throws SQLException {
 
 		this.driver = driver;
 		fw = new FormsWebElementClass();
+		bs = new BaseClass ();
+		rs = bs.getQueryResultSet ("select * from User_Data");
 	}
 
 	public WebElement homePage() {
@@ -168,5 +176,10 @@ public class FormsPage {
 		act.sendKeys(Keys.ENTER).build().perform();
 		act.sendKeys(Keys.TAB).build().perform();
 		Assert.assertEquals(selectedCity().getText().trim(), city.trim());
+	}
+	
+	public String getUserName() {
+		
+		return rs.;
 	}
 }
