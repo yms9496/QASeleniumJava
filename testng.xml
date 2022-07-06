@@ -2,36 +2,37 @@
  <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
 	<listeners>
-	
-	<listener class-name="listeners.FailureScreenshotsCollectionListener"></listener>
-	<listener class-name="listeners.DBConnectionManagerListener"></listener>
-	
+
+		<listener class-name="listeners.FailureScreenshotsCollectionListener"></listener>
+		<listener class-name="listeners.DBConnectionManagerListener"></listener>
+        <listener class-name="listeners.ExtentReporterNG"></listener>
+
 	</listeners>
-	
-	<test thread-count="1" name="Test" >
+
+	<test thread-count="1" name="Test">
 		<classes>
 			<class name="homePage.HomePageTest" />
 		</classes>
 	</test> <!-- Test -->
 
-	<test thread-count="1" name="Test2" >
+	<test thread-count="1" name="Test2">
 		<classes>
 			<class name="elementsModule.ElementsPageTest" />
 		</classes>
 	</test> <!-- Test -->
-	
-		<test thread-count="1" name="Test3" >
+
+	<test thread-count="1" name="Test3">
 		<classes>
 			<class name="elementsModule.TextBoxPageTest" />
 		</classes>
 	</test> <!-- Test -->
-	
-		<test thread-count="1" name="Test4" >
+
+	<test thread-count="1" name="Test4">
 		<classes>
 			<class name="formsPage.StudentRegistrationFormTest" />
 		</classes>
 	</test> <!-- Test -->
-	
-	
+
+
 </suite> <!-- Suite -->
 
