@@ -37,22 +37,22 @@ public class DBConnectionManagerListener extends BaseClass implements ITestListe
 
 	public void onStart(ITestContext context) {
 
-		try {
-			getDBConnection();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			getDBConnection();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 
 	public void onFinish(ITestContext context) {
 		// TODO Auto-generated method stub
-		try {
-			closeDBConnection();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			closeDBConnection();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 
 	

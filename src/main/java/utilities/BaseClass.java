@@ -158,7 +158,7 @@ public class BaseClass {
 
 	
 
-	protected void getDBConnection() throws SQLException {
+	public void getDBConnection() throws SQLException {
 
 		String uname = eu.excelRead(em.excelMapping.get("DB_Uname"));
 		String pass = eu.excelRead(em.excelMapping.get("DB_Pass"));
@@ -191,29 +191,29 @@ public class BaseClass {
 	
 	public void executeQuery(String query) throws SQLException {
 		
-		getDBConnection();
+//		getDBConnection();
 		Statement stmt = conn.createStatement();
 		stmt.executeQuery(query);
-		closeDBConnection();
+//		closeDBConnection();
 		
 	}
 	
 	public void executePSQuery(PreparedStatement ps) throws SQLException {
 		
-		getDBConnection();
+//		getDBConnection();
 		ps.executeUpdate();
-		closeDBConnection();
+//		closeDBConnection();
 	}
 	
 	public void executeCSQuery(CallableStatement cs) throws SQLException {
 		
-		getDBConnection();
+//		getDBConnection();
 		cs.execute();
-		closeDBConnection();
+//		closeDBConnection();
 		
 	}
 
-	protected void closeDBConnection() throws SQLException {
+	public void closeDBConnection() throws SQLException {
 
 		if (conn != null) {
 			System.out.println("Closing DB Connection");

@@ -2,6 +2,9 @@ package pages;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -28,7 +31,7 @@ public class FormsPage {
 		this.driver = driver;
 		fw = new FormsWebElementClass();
 		bs = new BaseClass();
-		rs = bs.getQueryResultSet("select * from User_Data where user id = 001");
+
 	}
 
 	public WebElement homePage() {
@@ -133,9 +136,22 @@ public class FormsPage {
 		return driver.findElement(By.xpath(fw.submitButton));
 	}
 
-	public WebElement selectDate(WebElement calendar, String year, String month, String day)
+	public WebElement selectDate(WebElement calendar, String date)
 			throws InterruptedException {
 
+		String[] datesplitted = date.split("-");
+		int year = Integer.parseInt(datesplitted[1]);
+		int month = Integer.parseInt(datesplitted[1]);
+		int day = Integer.parseInt(datesplitted[1]);
+
+	    LocalDate date1 = LocalDate.of(year,month,day);
+	    String date2 = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).format(date1);
+	    datesplitted = date2.split(" ");
+		
+		String y = (datesplitted[1]);
+		String m = (datesplitted[1]);
+		String d = (datesplitted[1]);
+	    
 		// clicking on the calendar to open calendar widget
 		calendar.click();
 
@@ -143,7 +159,7 @@ public class FormsPage {
 		WebElement yearDropDown = driver.findElement(
 				By.xpath("//div[@class = 'react-datepicker']//select[@class = 'react-datepicker__year-select']"));
 		Select selectYear = new Select(yearDropDown);
-		selectYear.selectByVisibleText(year);
+		selectYear.selectByVisibleText(y);
 
 		Thread.sleep(2000);
 
@@ -151,11 +167,11 @@ public class FormsPage {
 		WebElement monthDropDown = driver.findElement(
 				By.xpath("//div[@class = 'react-datepicker']//select[@class = 'react-datepicker__month-select']"));
 		Select selectMonth = new Select(monthDropDown);
-		selectMonth.selectByVisibleText(month);
+		selectMonth.selectByVisibleText(m);
 
 		// Select and return date
 
-		String locator = "//div[@class = 'react-datepicker__week']//div[text() = '" + day
+		String locator = "//div[@class = 'react-datepicker__week']//div[text() = '" + d
 				+ "'][not( contains(@class,'outside-month'))]";
 		WebElement selectedDate = driver.findElement(By.xpath(locator));
 		return selectedDate;
@@ -183,95 +199,175 @@ public class FormsPage {
 
 	public String getUserFirstName() throws SQLException {
 
+		//bs.getDBConnection();
+		
 		String userFirstName = "";
-		while (rs.next()) {
+		
+		rs = bs.getQueryResultSet("select * from \"QASelenium\".\"User_Data\" where \"user id\" = 1");
+		
+		while(rs.next()) {
 
 			userFirstName = rs.getString("first name");
+
 		}
+		
+		//bs.closeDBConnection();
 		return userFirstName;
 	}
 
 	public String getUserLastName() throws SQLException {
+		
+	//	bs.getDBConnection();
 
 		String userLastName = "";
-		while (rs.next()) {
+		
+		rs = bs.getQueryResultSet("select * from \"QASelenium\".\"User_Data\" where \"user id\" = 1");
+		
+		while(rs.next()) {
 
-			userLastName = rs.getString("last name");
+		
+		userLastName = rs.getString("last name");
 		}
+	//	bs.closeDBConnection();
 		return userLastName;
 	}
 	
 	public String getUserEmail() throws SQLException {
+		
+		//bs.getDBConnection();
 
 		String userEmail = "";
-		while (rs.next()) {
-
+		
+		rs = bs.getQueryResultSet("select * from \"QASelenium\".\"User_Data\" where \"user id\" = 1");
+		
+		while(rs.next()) {
 			userEmail = rs.getString("user email");
 		}
+	//	bs.closeDBConnection();
 		return userEmail;
 	}
 	
-	public String getGender() throws SQLException {
+	public WebElement getGender() throws SQLException {
+		
+	//	bs.getDBConnection();
 
 		String userGender = "";
-		while (rs.next()) {
-
+		
+		rs = bs.getQueryResultSet("select * from \"QASelenium\".\"User_Data\" where \"user id\" = 1");
+		
+		while(rs.next()) {
 			userGender = rs.getString("gender");
 		}
-		return userGender;
+		
+		WebElement genderCheckBox;
+		
+		if(userGender.equalsIgnoreCase("Male"))
+			genderCheckBox = genderMale();
+		else if(userGender.equalsIgnoreCase("Male"))
+			genderCheckBox = genderFemale();
+		else
+			genderCheckBox = genderOther();
+		
+	//	bs.closeDBConnection();
+		return genderCheckBox;
 	}
 	
-	public String getUserContactNumber() throws SQLException {
+	public long getUserContactNumber() throws SQLException {
+		
+	//	bs.getDBConnection();
 
-		String userContactNumber = null;
-		while (rs.next()) {
-
-			userContactNumber = Integer.toString(rs.getInt("phone number"));
+		long userContactNumber = 0;
+		
+		rs = bs.getQueryResultSet("select * from \"QASelenium\".\"User_Data\" where \"user id\" = 1");
+		
+		while(rs.next()) {
+			userContactNumber = rs.getLong("phone number");
 		}
+	//	bs.closeDBConnection();
 		return userContactNumber;
-	}
 	
+	}
 	// DOB part to be implemented here
 	
+	
+	public String getUserDOB() throws SQLException {
+		
+	//	bs.getDBConnection();
+
+		String userDOB = "";
+		
+		rs = bs.getQueryResultSet("select * from \"QASelenium\".\"User_Data\" where \"user id\" = 1");
+		
+		while(rs.next()) {
+			userDOB = rs.getDate("user dob").toString();
+		}
+	//	bs.closeDBConnection();	
+		return userDOB;
+	}
+	
+	
 	public String getUserSubjects() throws SQLException {
+		
+	//	bs.getDBConnection();
 
 		String userSubjects = "";
-		while (rs.next()) {
-
+		
+		rs = bs.getQueryResultSet("select * from \"QASelenium\".\"User_Data\" where \"user id\" = 1");
+		
+		while(rs.next()) {
 			userSubjects = rs.getString("subjects");
 		}
+	//	bs.closeDBConnection();
 		return userSubjects;
+		
 	}
 	
 	// Hobbies part to be implemented
 	
 	public String getUserCurrentAddress() throws SQLException {
+		
+	//	bs.getDBConnection();
 
 		String userCurrentAddress = "";
-		while (rs.next()) {
-
-			userCurrentAddress = rs.getString("address");
+		
+		rs = bs.getQueryResultSet("select * from \"QASelenium\".\"User_Data\" where \"user id\" = 1");
+		
+		while(rs.next()) {
+		
+			userCurrentAddress = rs.getString("current address");
+		
 		}
+	//	bs.closeDBConnection();
 		return userCurrentAddress;
 	}
 	
 	public String getUserCity() throws SQLException {
+		
+	//	bs.getDBConnection();
 
 		String userCity = "";
-		while (rs.next()) {
-
+		
+		rs = bs.getQueryResultSet("select * from \"QASelenium\".\"User_Data\" where \"user id\" = 1");
+		
+		while(rs.next()) {
 			userCity = rs.getString("city");
 		}
+	//	bs.closeDBConnection();
 		return userCity;
 	}
 	
 	public String getUserState() throws SQLException {
+		
+	//	bs.getDBConnection();
 
 		String userState = "";
-		while (rs.next()) {
-
+		
+		rs = bs.getQueryResultSet("select * from \"QASelenium\".\"User_Data\" where \"user id\" = 1");
+		
+		while(rs.next()) {
 			userState = rs.getString("state");
 		}
+	//	bs.closeDBConnection();
 		return userState;
 	}
 	

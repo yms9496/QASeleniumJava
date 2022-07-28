@@ -44,6 +44,8 @@ public class StudentRegistrationFormTest extends BaseClass{
 		jse = (JavascriptExecutor)driver;
 		jse.executeScript("return document.getElementById('adplus-anchor').remove();");
 		
+		getDBConnection();
+
 		//Thread.sleep(3000);
 
 	}
@@ -74,9 +76,11 @@ public class StudentRegistrationFormTest extends BaseClass{
 		
 		jse.executeScript("arguments[0].click()", fp.getGender());
 		
-		fp.userNumber().sendKeys(fp.getUserContactNumber());
+		fp.userNumber().sendKeys(Long.valueOf(fp.getUserContactNumber()).toString());
 		
-		fp.selectDate(fp.userDOB(), "2022", "July", "9").click();
+		String userDOB = fp.getUserDOB();
+		
+		fp.selectDate(fp.userDOB(), userDOB).click();
 		
 		fp.userSubjects().sendKeys(fp.getUserSubjects());
 		
@@ -101,6 +105,13 @@ public class StudentRegistrationFormTest extends BaseClass{
 	@AfterTest
 	public void afterFormsPage(){
 		
+		try {
+			closeDBConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		driver.close();
 	}
 
